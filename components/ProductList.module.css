@@ -1,0 +1,450 @@
+/*
+CSS for products.js, [slug].js, [permalink].js, ProductList.js
+*/
+.text{
+    color: inherit;
+    text-shadow: inherit;
+    font-family: inherit;
+}
+.myHover:hover{
+    transform: scale3d(1.1, 1.1, 1.1);
+    cursor: pointer;
+}
+.container{
+    padding: 15px;
+    margin-top: 15px;
+    justify-content: center;
+    min-height: 80vh;
+}
+.productList{
+    display: flex;
+    min-height: 50vh;
+    width: 100%;
+    overflow:hidden;
+}
+.productBox{
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.catTitle>*{
+    font-size: 1.1em;
+    text-align: center;
+}
+.catTitle{
+    align-items: center;
+    padding: 15px 0px 15px 0px;
+}
+
+.loadingImg{
+    margin: 4em auto;
+    animation: loadingImg 2000ms ease-in-out infinite;
+}
+@keyframes loadingImg{
+    0%{
+        opacity: 0.2;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.2;
+    }
+}
+@media screen and (max-width: 400px){
+    .loadingImg{
+        width: 90%;
+    }
+    
+}
+.paginator{
+    display: flex;
+    margin: auto;
+    padding: 1.2em;
+}
+
+.paginator>*{
+    list-style: none;
+    margin: 0.5em;
+    padding: 0.5em;
+    transition: all 300ms ease-in;
+}
+.paginator>*:hover{
+    cursor: pointer;
+    text-shadow: 0px 0px 10px black;
+    transform: translate3d(-2px, -2px, -5em);
+}
+.activeClassName{
+    font-weight: bold;
+    text-shadow: 0px 0px 8px black;
+}
+.sampleArea{
+    margin: auto;
+    padding: 0px;
+    width: 100%;
+    border-top: 2px outset gray;
+    max-height: fit-content;
+}
+
+.sampleCatLink:hover{
+    cursor: pointer;
+}
+.sampleProductList{
+    display: flex;
+    padding: 0px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+}
+.sampleProductBox{
+    width: 100%;
+    margin: 10px;
+    height: 300px;
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.sampleProductBox:nth-child(1){
+    margin-left: 5px;
+    padding-left: 5px;
+}
+@media screen and (max-width: 500px) {
+    .sampleProductBox{
+        margin: 25px;
+    }
+}
+.sampleProductList::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.sampleProductList::-webkit-scrollbar-thumb {
+background: rgb(75, 74, 74);
+border-radius: 10px;
+}
+.sampleProductList::-webkit-scrollbar-track {
+background: transparent;
+}
+.product{
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 250px;
+    max-height: 100%;
+    box-shadow: 0px 0px 12px rgba(41, 41, 41, 0.492);
+    transition: transform 300ms ease-in;
+    border-radius: 4px;
+}
+.product:hover{
+    transform: translate3d(-2px, -2px, -5em);}
+
+.productImgBox{
+    height: 250px;
+    width: 100%;
+    border-radius: 4px;
+}
+.productImg{
+    margin: auto;
+    padding: 5px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 250px;
+    height: 250px;
+    object-fit: scale-down;
+    background-color: white;
+    border-radius: 4px;
+}
+.productTitle{
+    position: absolute;
+    bottom: 0px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 50px;
+    color: rgb(243, 241, 241);
+    background-color: rgba(146, 144, 144, 0.8);
+    
+    transition: all 300ms ease-in-out;
+}
+.soldOut{
+    position: absolute;
+    top: 3px;
+    left: -6px;
+    width: 50%;
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(34, 33, 33);
+    /*background-color: rgb(155, 29, 46);
+    box-shadow: 2px 2px 2px gray;*/
+    border-radius: 3px;
+}
+.soldOutPermalink{
+    position: absolute;
+    padding: 5px;
+    top: 3px;
+    left: 0px;
+    width: 30%;
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(34, 33, 33);
+    /*background-color: rgb(155, 29, 46);
+    box-shadow: 2px 2px 2px gray;*/
+    border-radius: 3px;
+    z-index: 3;
+}
+
+.productPage{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    min-height: 80vh;
+    padding: 20px;
+}
+.pdtImgDiv{
+    position: relative;
+    padding: 0px;
+    display: block;
+    max-width: 400px;
+    margin-top: 15px;
+}
+.zoomIcon{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    color: rgb(41, 41, 41);
+    z-index: 1;
+    background-color: rgba(211, 209, 209, 0.596);
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(209, 209, 209, 0.651);
+    width: 40px;
+    height: 40px;
+    box-sizing: content-box;
+}
+.pdtImgDivZoomed{
+    display: none;
+    align-items: center;
+    padding: 20px;
+    top: 0px;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(100, 101, 102, 0.658);
+    z-index: 15;
+    width: 100%;
+    overflow-y: scroll;
+}
+.pdtImgDivZoomed .soldOut{
+    display: none;
+}
+.pdtImgDivZoomed img{
+    width: 100%;
+    height: 90vh;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+}
+.zoomedBox{
+    height: 90vh;
+    width: 100%;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+.show{
+    display: flex;
+}
+.pdtPgImg{
+    background-color: white;
+    width: 100%;
+    height: 300px;
+    max-height: 400px;
+    object-fit: contain;
+    margin: auto;
+    border-radius: 4px;
+}
+.carousel{
+    width: 80%;
+    margin-top: 15px;
+    margin: auto;
+    height: 90vh;
+}
+@media screen and (max-width: 650px) {
+    .pdtImgDivZoomed img{
+        object-fit: contain;
+        height: 60vh;
+
+    }
+    
+    .zoomedBox{
+        width: 100%;
+        top: 0px;
+        height: 70vh;
+    }
+    .carousel{
+        width: 100%;
+    }
+}
+.pdtDscr{
+    display: block;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.pdtDscr h1{
+    margin: 0px;
+    padding: 0px;
+}
+.brandsItem{ 
+    height: 150px;
+}
+.brandsImg{
+  height: 100px;
+  object-fit: contain;  
+}
+.categoryArea{
+    margin: auto;
+    width: 100%;
+    border-top: 1px solid gray;
+}
+.categoryList{
+    display: flex;
+    margin: auto;
+}
+.categoryList::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.categoryList::-webkit-scrollbar-thumb {
+background: rgb(75, 74, 74);
+border-radius: 10px;
+}
+.categoryList::-webkit-scrollbar-track {
+background: transparent;
+}
+@media screen and (max-width: 1100px) {
+    .categoryList{
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+.categoryItem{
+    min-width: 250px;
+    height: 250px;  
+    
+}
+.categoryItemImg{
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    
+    border-radius: 4px;
+}
+.categoryItem:hover .productTitle{
+    background-color: rgba(146, 144, 144, 0.5);
+    color: rgb(26, 24, 24);
+}
+
+.categoryItem a, .link{
+    width: 100%;
+    top: 10px;
+    left: 20px;
+    font-weight: bold;
+    font-size:  20px;
+    color: inherit;
+    text-decoration: none;
+}
+@media screen and (max-width: 600px) {
+    .link{
+        font-size: 16px;
+    }
+}
+.filterIcon{
+    display: none;
+    width: fit-content;
+    padding: 10px;
+    font-size: 26px;
+    margin: 20px 0px 20px 20px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.747);
+}
+.filtersDisplay{
+    display: block;
+}
+.flex{
+    display: flex;
+}
+.block{
+    display: block;
+}
+.filters{
+    width:100%;
+    max-width: 1100px;
+    border-top: 1px solid rgba(128, 128, 128, 0.801);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.712);
+    margin: 30px 0px 30px 0px;
+}
+@media screen and (max-width: 760px) {
+    .filterIcon{
+        display: flex;
+    }
+    .filtersDisplay{
+        display: none;
+    }
+    .catTitle{
+        
+    padding: 15px 0px 15px 20px;
+    }
+}
+.filterBox{ 
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin: 0 15px 0 15px;
+}
+.filterLabel{
+    font-family: "Roboto";
+    font-size: 14px;
+}
+.filterInput>*{
+    border: none;
+}
+.filterInput div{
+    border: none
+}
+.filterInput{
+    border: none;
+    height: fit-content;
+}
+.slugcontainer{
+    padding: 15px;
+    margin: auto;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 80vh;
+}
