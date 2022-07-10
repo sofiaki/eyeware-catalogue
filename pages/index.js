@@ -13,6 +13,7 @@ import Video from "../components/Video";
 import Filler from "../components/filler";
 import Video2 from "../components/Video2";
 import PopUpVideo from "../components/PopUpVideo";
+import commerce from "../lib/commerce";
 
 export async function getStaticProps() {
   const { data: categories } = await commerce.categories.list({
