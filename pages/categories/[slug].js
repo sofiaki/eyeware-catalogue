@@ -80,7 +80,6 @@ export async function getStaticPaths() {
       })
         .then((res) => res.json())
         .then((i) => i.data);
-console.log(categories.length)
   return {
     paths: categories.map((category) => ({
       params: {

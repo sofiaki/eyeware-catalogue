@@ -48,11 +48,12 @@ export default function CategoriesPage() {
         .then((i) => setCategories(i.data));
 
       setLoading(false);
-      setBrands(categories.filter((i) => i.description === "brand"));
+      
     })()
     
-
-    console.log(brands);
+    return ()=>{
+      setBrands(categories.filter((i) => i.description === "brand"));
+    }
   },[]);
 
   useEffect(() => {

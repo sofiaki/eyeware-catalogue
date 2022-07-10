@@ -16,7 +16,6 @@ export default function PopUpVideo() {
   const [play, setPlay] = React.useState(true);
 
   React.useEffect(() => {
-    console.log(sessionStorage.getItem("popup"));
     setUrl(
       window.innerWidth < 600
         ? "https://www.dropbox.com/s/kgw6g9y50bvwcj1/10s%20XA_MARGA_MARCO_9-16_V9_1.mp4"

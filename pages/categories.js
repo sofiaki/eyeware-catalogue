@@ -38,7 +38,7 @@ export async function getStaticProps() {
 }
 
 export default function CategoriesPage({ categories }) {
-  console.log(categories)
+ 
   return (
     <React.Fragment>
       <Head>
