@@ -1,5 +1,4 @@
 import React from "react";
-import commerce from "../lib/commerce";
 import SampleProductList from "../components/SampleProductList";
 import Layout  from "../components/layout";
 import Head from "next/head";
@@ -16,21 +15,41 @@ import Video2 from "../components/Video2";
 import PopUpVideo from "../components/PopUpVideo";
 
 export async function getStaticProps() {
-  const merchant = await commerce.merchants.about();
-  const { data: categories } = await commerce.categories.list({
-    limit: 100
-  });
-  const { data: products } = await commerce.products.list(
-    {
-      limit: 6,
-      sortBy: 'created_at',
-      sortDirection: 'desc'
-    }
-  );
+  const url = new URL("https://api.chec.io/v1/categories");
+
+  let param = {
+    type: "slug",
+    limit: "200",
+  };
+  Object.keys(param).forEach((key) => url.searchParams.append(key, param[key]));
+
+  let headers = {
+    "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+    const categories = await fetch(url, {
+      method: "GET",
+      headers: headers,
+    })
+      .then((res) => res.json()).then((data)=>data.data)
+
+      const url2 = new URL("https://api.chec.io/v1/products");
+      let param2 = {
+        limit: "6",
+      };
+      Object.keys(param2).forEach((key) => url2.searchParams.append(key, param[key]));
+    
+      const products = await fetch(url2, {
+        method: "GET",
+        headers: headers,
+      })
+        .then((res) => res.json()).then((data)=>data.data)
+   
+      products.sort((a,b)=> (a.updated < b.updated)?1:-1)
 
   return {
     props: {
-      merchant,
       categories,
       products,
     },

@@ -237,7 +237,7 @@ export default function ProductPage({ product }) {
             >
               {inventoryCheck === 0 && (
                 <Grid className={styles.soldOutPermalink}>
-                  Χαμηλή διαθεσιμότητα
+                  Low availability
                 </Grid>
               )}
               <Carousel

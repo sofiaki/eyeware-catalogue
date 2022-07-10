@@ -1,5 +1,4 @@
 // pages/categories/glasses/man.js
-import commerce from "../../../lib/commerce";
 import ProductList from "../../../components/ProductList";
 import React from "react";
 import { Grid, Typography } from "@mui/material";
