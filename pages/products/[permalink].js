@@ -129,14 +129,14 @@ export async function getStaticPaths() {
 }
 
 export default function ProductPage({ product }) {
-  const {
+ if(product){ const {
     inventory,
     assets,
     meta,
     related_products: relatedProducts,
   } = product;
 
-  const type = product.categories.some((i) =>
+  const type = product && product.categories.some((i) =>
     ["lences", "lenssolution"].includes(i.slug)
   );
   const images = assets.filter(({ is_image }) => is_image);
@@ -327,5 +327,5 @@ function Item(props) {
     <Paper>
       <img className={styles.pdtPgImg} src={props.item.url} />
     </Paper>
-  );
+  );}
 }
