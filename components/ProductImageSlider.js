@@ -26,8 +26,8 @@ export default function ProductImageSlider({images}) {
         delay
         
       );
-      setIndexPr(index == 0? images.length-1 :  index-1)
-      setIndexNx(index == images.length-1? 0 : index+1)
+      setIndexPr(index === 0? images.length-1 :  index-1)
+      setIndexNx(index === images.length-1? 0 : index+1)
       return () => {
         resetTimeout();
       };

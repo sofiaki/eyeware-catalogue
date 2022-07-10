@@ -34,7 +34,7 @@ export default function Product({ props }) {
       <Grid className={styles.product}>
         {props.inventory &&
           props.inventory.available != null &&
-          props.inventory.available == 0 && (
+          props.inventory.available === 0 && (
             /*<img className={styles.soldOut} src="/images/soldOut.png" />*/
             <Grid className={styles.soldOut}>Χαμηλή διαθεσιμότητα</Grid>
           )}

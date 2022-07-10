@@ -48,13 +48,13 @@ export default function FilterBox({
   };
   const [showMenu, setShowMenu] = React.useState(false);
   const handleClick = () => {
-    showMenu == false ? setShowMenu(true) : setShowMenu(false);
+    showMenu === false ? setShowMenu(true) : setShowMenu(false);
   };
   return (
     <>
       <Grid onClick={handleClick}  className={styles.filterIcon} >
         <FilterAltIcon/>
-        <Typography>Φίλτρα</Typography>
+        <Typography>Filters</Typography>
         {
           showMenu && <CloseRoundedIcon sx={{marginLeft: '10px'}}/>
         }
@@ -65,7 +65,7 @@ export default function FilterBox({
         {colors && (
           <Grid className={styles.filterBox}>
             <Typography variant="body" className={`${styles.filterLabel}`}>
-              Επίλεξε χρώμα:{" "}
+              Color:{" "}
             </Typography>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
@@ -88,7 +88,7 @@ export default function FilterBox({
           <Grid className={styles.filterBox}>
             <Grid>
               <Typography variant="body" className={`${styles.filterLabel}`}>
-                Επίλεξε κατασκευαστή:{" "}
+                Brand:{" "}
               </Typography>
             </Grid>
             <Grid>
@@ -112,7 +112,7 @@ export default function FilterBox({
         {polarized && (
           <Grid className={styles.filterBox}>
             <FormControlLabel
-              label="Πολωτικοί φακοί"
+              label="Polarized"
               control={<Checkbox onChange={handlePolarizedChange} />}
             />
           </Grid>

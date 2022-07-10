@@ -15,7 +15,7 @@ import TableRow from "@mui/material/TableRow";
 export default function CategoryMenu(props) {
   const [showMenu, setShowMenu] = React.useState(false);
   const handleClick = () => {
-    showMenu == false ? setShowMenu(true) : setShowMenu(false);
+    showMenu === false ? setShowMenu(true) : setShowMenu(false);
   };
   /**This code is affected by mui close handling */
   const handleClose = () =>{

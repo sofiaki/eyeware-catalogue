@@ -4,34 +4,39 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 const images = [
   {
-    img: "/images/banner/poseidon.jpg",
+    img: "/images/banner/poseidon wide.jpg",
+    imgMobile: "/images/banner/poseidon.jpg",
     name: "Poseidon II",
     brand: "/images/banner/zeus-dione.png",
     link: "products/MqnqCm",
   },
   {
-    img: "/images/banner/WILLIAM MORRIS 50164 C3.jpg",
+    img: "/images/banner/william morris.jpg",
+    imgMobile: "/images/banner/william morris mobile.jpg",
     name: " ",
     brand: "/images/banner/wmorris.png",
-    link: "products/OjZ9pO",
+    link: "categories/williammorris",
   },
   {
-    img: "/images/banner/MELISSA C4 (B).jpg",
-    name: "Melissa",
+    img: "/images/banner/WOMEN-1920x480.png",
+    imgMobile: "/images/banner/WOMEN-1920x480 mobile.png",
+    name: "Alma",
     brand: "/images/banner/blackTransparent.png",
-    link: "/products/4WOd9x",
+    link: "/products/FyUKmM",
   },
   {
-    img: "/images/transitions/banner-dark.jpg",
+    img: "/images/banner/banner-dark(1).png",
+    imgMobile: "/images/banner/banner-dark mobile.png",
     name: "Xtractive Polarized",
     brand: "/images/transitions/logo-transitions-white-20.webp",
     link: "/transition/xtractive_polarized",
   },
   {
-    img: "/images/banner/ONYX.jpg",
-    name: "Onyx",
+    img: "/images/banner/MELISSA C4 (B) WIDE.png",
+    imgMobile: "/images/banner/MELISSA C4 (B) mobile.jpg",
+    name: "Melissa",
     brand: "/images/banner/blackTransparent.png",
-    link: "/products/owHS91",
+    link: "/products/4WOd9x",
   },
 ];
 const delay = 5000;
@@ -42,7 +47,7 @@ export default function Banner3() {
   const [indexPr, setIndexPr] = React.useState(0);
   const [indexNx, setIndexNx] = React.useState(0);
   const timeoutRef = React.useRef(null);
-
+  const [mobile, setMobile] = React.useState(false)
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -50,6 +55,7 @@ export default function Banner3() {
   }
 
   React.useEffect(() => {
+    window.innerWidth < 680 ? setMobile(true) : setMobile(false)
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
@@ -58,8 +64,8 @@ export default function Banner3() {
         ),
       delay
     );
-    setIndexPr(index == 0 ? images.length - 1 : index - 1);
-    setIndexNx(index == images.length - 1 ? 0 : index + 1);
+    setIndexPr(index === 0 ? images.length - 1 : index - 1);
+    setIndexNx(index === images.length - 1 ? 0 : index + 1);
     return () => {
       resetTimeout();
     };
@@ -75,17 +81,21 @@ export default function Banner3() {
           <div key={index} className={styles.slide}>
             <a href={image.link}>
               <div className={styles.slideDiv}>
-                <div className={styles.slideDivImg}>
+                {/* <div className={styles.slideDivImg}>
                   <img src={image.img} />
-                </div>
-                <div className={styles.slidesBrand}>
+                </div> */}
+                <img
+                  src={mobile ? image.imgMobile : image.img}
+                />
+                {/* <div className={styles.slidesBrand2}>
                   <div className={styles.brandName}>
                     <p>{image.name}</p>
                   </div>
                   <div className={styles.brandImg}>
                     <img src={image.brand} />
                   </div>
-                </div>
+                  <img src={image.brand} />
+                </div> */}
               </div>
             </a>
           </div>
@@ -101,6 +111,7 @@ export default function Banner3() {
           top: "50%",
           left: "10px",
           zIndex: "2",
+          "&:hover": { fontSize: "50px", color: "rgba(120, 120, 120, 0.767)" },
         }}
         onClick={() => {
           setIndex(indexPr);
@@ -116,25 +127,13 @@ export default function Banner3() {
           top: "50%",
           right: "10px",
           zIndex: "2",
+          "&:hover": { fontSize: "50px", color: "rgba(120, 120, 120, 0.767)" },
         }}
         onClick={() => {
           setIndex(indexNx);
         }}
       />
       <div></div>
-
-      {/*<div className={styles.slideshowDots}>
-        {images.map((_, idx) => (
-        
-          <div
-            key={idx}
-            className={`${styles.slideshowDot} ${index === idx ? styles.active : ""}`}
-            onClick={() => {
-              setIndex(idx);
-            }}
-          ></div>
-        ))}
-          </div>*/}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export async function getStaticProps() {
 
   const products = products1
     ? products1.filter((i) =>
-        i.categories.some((j) => i.categories.some((j) => j.slug == "glasses"))
+        i.categories.some((j) => i.categories.some((j) => j.slug === "glasses"))
       )
     : null;
   return {
@@ -99,7 +99,7 @@ export default function CategoryPage({ products }) {
           "clipon",
           "transition",
         ].includes(j.slug) &&
-          !brands.some((b) => b.slug == j.slug) &&
+          !brands.some((b) => b.slug === j.slug) &&
           brands.push(j);
       })
     );
@@ -110,18 +110,18 @@ export default function CategoryPage({ products }) {
   function getColors(filteredProducts) {
     const colors = ["Όλα"];
     filteredProducts.map((i) => {
-      !colors.some((b) => b == i.sku) && colors.push(i.sku);
+      !colors.some((b) => b === i.sku) && colors.push(i.sku);
     });
     return colors;
   }
   function getPolarized(filteredProducts) {
     return filteredProducts.some(
-      (i) => i.categories.filter((i) => i.slug == "polarised").length > 0
+      (i) => i.categories.filter((i) => i.slug === "polarised").length > 0
     );
   }
   function getClipOn(filteredProducts) {
     return filteredProducts.some(
-      (i) => i.categories.filter((i) => i.slug == "clipon").length > 0
+      (i) => i.categories.filter((i) => i.slug === "clipon").length > 0
     );
   }
 
@@ -143,18 +143,18 @@ export default function CategoryPage({ products }) {
   function masterFilter(color1, brand, polarized, clipOn, products) {
     let filtered = [];
     filtered =
-      color1 != "Όλα" ? products.filter((i) => i.sku == color) : products;
+      color1 != "Όλα" ? products.filter((i) => i.sku === color) : products;
     filtered = brand
       ? filtered.filter((i) =>
           i.categories.some((j) => brand.slug.includes(j.slug))
         )
       : filtered;
     filtered = polarizedProducts
-      ? filtered.filter((i) => i.categories.some((j) => j.slug == "polarised"))
+      ? filtered.filter((i) => i.categories.some((j) => j.slug === "polarised"))
       : filtered;
     filtered =
-      clipOnProducts == true
-        ? filtered.filter((i) => i.categories.some((j) => j.slug == "clipon"))
+      clipOnProducts === true
+        ? filtered.filter((i) => i.categories.some((j) => j.slug === "clipon"))
         : filtered;
     return filtered;
   }

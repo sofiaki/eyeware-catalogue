@@ -57,7 +57,7 @@ const handlePaginationChange = (e, p) => {
           "clipon",
           "transition"
         ].includes(j.slug) &&
-          !brands.some((b) => b.slug == j.slug) &&
+          !brands.some((b) => b.slug === j.slug) &&
           brands.push(j);
       })
     );
@@ -67,7 +67,7 @@ const handlePaginationChange = (e, p) => {
   function getColors(filteredProducts) {
     const colors = ["Όλα"];
     filteredProducts.map((i) => {
-      !colors.some((b) => b == i.sku) && colors.push(i.sku);
+      !colors.some((b) => b === i.sku) && colors.push(i.sku);
     });
     return colors;
   }

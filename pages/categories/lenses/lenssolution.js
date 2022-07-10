@@ -92,7 +92,7 @@ export default function CategoryPage({ products }) {
           "clipon",
           "transition",
         ].includes(j.slug) &&
-          !brands.some((b) => b.slug == j.slug) &&
+          !brands.some((b) => b.slug === j.slug) &&
           brands.push(j);
       })
     );
@@ -123,10 +123,10 @@ export default function CategoryPage({ products }) {
   //Intersection of filtered products by color and by brand
   function filterAll(byBrand) {
     let filterByAll = [];
-    if (polarized == false) {
+    if (polarized === false) {
       if (color != "Όλα" && !brand) {
         byColor.map((i) => filterByAll.push(i));
-      } else if (color == "Όλα" && brand) {
+      } else if (color === "Όλα" && brand) {
         byBrand.map((i) => filterByAll.push(i));
       } else if (color != "Όλα" && brand) {
         filterByAll = byColor.filter((i) => byBrand.includes(i));
@@ -135,11 +135,11 @@ export default function CategoryPage({ products }) {
       }
     } else {
       filterByAll = filteredProducts.filter((i) =>
-        i.categories.some((j) => j.slug == "polarised")
+        i.categories.some((j) => j.slug === "polarised")
       );
       if (color != "Όλα" && !brand) {
         byColor.map((i) => filterByAll.push(i));
-      } else if (color == "Όλα" && brand) {
+      } else if (color === "Όλα" && brand) {
         byBrand.map((i) => filterByAll.push(i));
       } else if (color != "Όλα" && brand) {
         filterByAll = byColor.filter((i) => byBrand.includes(i));

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display:ital@1&display=swap');
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');body {
   /*background-color: rgb(149, 180, 209);*/
   background-color: rgb(163, 163, 163);
-  font-family:'Open Sans', sans-serif;
+  font-family:'Roboto', sans-serif;
   /*text-shadow: 0px 0px 2px rgb(155, 154, 154);*/
   color: rgb(241, 239, 239);
   font-size: 18px;

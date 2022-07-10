@@ -1,7 +1,7 @@
 
 .slideshow {
     position: relative;
-    margin: 20px auto;
+    margin: auto;
     overflow: hidden;
     width: 100%;
     min-width: 300px;
@@ -11,27 +11,34 @@
   .slideshowSlider {
     white-space: nowrap;
     transition: ease 1000ms;
-    height: 80vh;
-    width: 100%;
+    /*height: 100vh;
+    */width: 100%;
   }
   
   .slide {
-    padding: 5px;
+    padding: 0px;
     display: inline-block;
     width: 100%;
   }
-  .slide img{
+  .slide  img{
       width: 100%;
-    height: 80vh;
+    /**/
   }
   .slideDiv{
+    position: relative;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    
   }
-  .slideDiv >*{
+  .slideDiv > img {
+    /*height: 100vh;
+    */object-fit: cover;
+    object-position: center;margin-top: 0px;
+  }
+  /* .slideDiv >*{
     width: 50%;
-  }
+  } */
   .slideDivImg img{
     object-fit: cover;
     object-position: top;
@@ -49,15 +56,26 @@
   .brandName{
     color: rgb(20, 19, 19);
   }
-  .slidesBrand img{ 
+  .slidesBrand2 img{ 
     object-fit: contain; 
     object-position: top;
-    width: 50%;
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.355);
   }
   .slidesBrand:hover,.slideDivImg:hover{
     transform: scale(1.01);
   }
+  .slidesBrand2 {
+    width: 20%;
+    /*height: 60%;
+    */position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: flex-end;
+  }
   @media screen and (max-width: 680px) {
+    
     .slidesBrand{
       font-size: 2.5em;
     }
@@ -67,9 +85,11 @@
   }
   @media screen and (max-width: 500px) {
     .slide img{
-      height: 50vh;
-    }
-   
+      /*height: 70vh;
+   */ }
+   .slideshowSlider {
+      /*height: 70vh;
+   */ }
     .slideDiv{
       display: grid;
     }
@@ -82,8 +102,8 @@
     .slidesBrand{
       padding-top: 0px;
       display: flex;
-      height: 30vh;
-    }
+      /*height: 30vh;
+   */ }
     
     .brandName{
       display: none;
@@ -95,13 +115,13 @@
   .slideshowDots {
     text-align: center;
     z-index: 3;
-    height: 40px;
-  }
+    /*height: 40px;
+ */ }
   
   .slideshowDot {
     display: inline-block;
-    height: 20px;
-    width: 20px;
+    /*height: 20px;
+    */width: 20px;
     border-radius: 50%;
   
     cursor: pointer;

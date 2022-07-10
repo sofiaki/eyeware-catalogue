@@ -143,7 +143,7 @@ export default function ProductPage({ product }) {
   const inventoryCheck = product.inventory.available;
   const [showMenu, setShowMenu] = React.useState(false);
   const handleClick = () => {
-    showMenu == false ? setShowMenu(true) : setShowMenu(false);
+    showMenu === false ? setShowMenu(true) : setShowMenu(false);
   };
   let brand = "";
   product.categories.map((j) => {
@@ -235,7 +235,7 @@ export default function ProductPage({ product }) {
                 margin: "auto",
               }}
             >
-              {inventoryCheck == 0 && (
+              {inventoryCheck === 0 && (
                 <Grid className={styles.soldOutPermalink}>
                   Χαμηλή διαθεσιμότητα
                 </Grid>

@@ -49,8 +49,9 @@ export default function IndexPage({categories, products }) {
           <PopUpVideo />
           <Grid p="0px" m="0px" width="100%">
             <Layout />
+            <Banner3/>
             <Grid className={styles.mainContent}>
-              <Banner3/>
+              
               <Filler />
               <Video2 />
               <Grid height={30}></Grid>

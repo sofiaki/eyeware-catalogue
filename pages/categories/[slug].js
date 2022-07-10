@@ -40,7 +40,7 @@ export async function getStaticProps({ params }) {
     limit: 200,
   });
   const products = myproducts
-    ? myproducts.filter((i) => i.categories.some((j) => j.slug == slug))
+    ? myproducts.filter((i) => i.categories.some((j) => j.slug === slug))
     : null;
   return {
     props: {
@@ -94,13 +94,13 @@ export default function CategoryPage({ category, products }) {
   };
 
   function filter() {
-    if (!brand && (!kind || kind == "all")) {
+    if (!brand && (!kind || kind === "all")) {
       return category.slug;
     }
     if (!brand && kind) {
       return [category.slug, kind];
     }
-    if (brand && (!kind || kind == "all")) {
+    if (brand && (!kind || kind === "all")) {
       return [category.slug, brand.slug];
     }
     if (brand && kind) {
@@ -128,7 +128,7 @@ export default function CategoryPage({ category, products }) {
           "clipon",
           "transition",
         ].includes(j.slug) &&
-          !brands.some((b) => b.slug == j.slug) &&
+          !brands.some((b) => b.slug === j.slug) &&
           brands.push(j);
       })
     );
@@ -148,8 +148,8 @@ export default function CategoryPage({ category, products }) {
       setBrands({});
     };
   }, [category /*kind*/]);
-  const sunglasses = category && category.slug == "sunglasses";
-  const glasses = category && category.slug == "glasses";
+  const sunglasses = category && category.slug === "sunglasses";
+  const glasses = category && category.slug === "glasses";
 
   return (
     <>

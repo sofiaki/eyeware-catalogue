@@ -17,7 +17,7 @@ export async function getStaticProps() {
   const { data: categories } = await commerce.categories.list({
     limit: 100
   });
-  const brands= categories.filter((i)=> i.description == 'brand').sort((a,b)=> (a.name > b.name)?1:-1)
+  const brands= categories.filter((i)=> i.description === 'brand').sort((a,b)=> (a.name > b.name)?1:-1)
   return {
     props: {
       brands,
