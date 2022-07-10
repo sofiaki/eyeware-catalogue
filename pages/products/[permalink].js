@@ -18,7 +18,7 @@ import arrowsExpand from "@iconify/icons-foundation/arrows-expand";
 
 export async function getStaticProps({ params }) {
   const { permalink } = params;
-  /*
+  
    const product = await commerce.products.retrieve(permalink, {
     type: "permalink",
   });
@@ -28,96 +28,27 @@ export async function getStaticProps({ params }) {
       product,
     },
   };
-*/
-  const url = new URL("https://api.chec.io/v1/products/" + permalink);
 
-  let param = {
-    type: "permalink",
-  };
-  Object.keys(param).forEach((key) => url.searchParams.append(key, param[key]));
-
-  let headers = {
-    "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-
-  const product = await fetch(url, {
-    method: "GET",
-    headers: headers,
-  }).then((res) => res.json());
-  return {
-    props: {
-      product,
-    },
-  };
+  
 }
 export async function getStaticPaths() {
-  const url1 = new URL("https://api.chec.io/v1/products");
-
-  let params1 = {
-    limit: "200",
-    category_slug: "sunglasses",
-  };
-  Object.keys(params1).forEach((key) =>
-    url1.searchParams.append(key, params1[key])
+  const { data: products1 } = await commerce.products.list(
+    {
+      limit: 200,
+      page: 1,
+      sortBy: 'created_at',
+      sortDirection: 'desc'
+    }
   );
-
-  let headers = {
-    "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-
-  const { data: products1 } = await fetch(url1, {
-    method: "GET",
-    headers: headers,
-  }).then((response) => response.json());
-
-  const url2 = new URL("https://api.chec.io/v1/products");
-  let params2 = {
-    limit: "200",
-    category_slug: "glasses",
-  };
-  Object.keys(params2).forEach((key) =>
-    url2.searchParams.append(key, params2[key])
+  const { data: products2 } = await commerce.products.list(
+    {
+      limit: 200,
+      page: 2,
+      sortBy: 'created_at',
+      sortDirection: 'desc'
+    }
   );
-
-  const { data: products2 } = await fetch(url2, {
-    method: "GET",
-    headers: headers,
-  }).then((response) => response.json());
-
-  const url3 = new URL("https://api.chec.io/v1/products");
-  let params3 = {
-    limit: "200",
-    category_slug: "lences",
-  };
-  Object.keys(params3).forEach((key) =>
-    url3.searchParams.append(key, params3[key])
-  );
-
-  const { data: products3 } = await fetch(url3, {
-    method: "GET",
-    headers: headers,
-  }).then((response) => response.json());
-
-  const url4 = new URL("https://api.chec.io/v1/products");
-
-  let params4 = {
-    limit: "200",
-    category_slug: "lenssolution",
-  };
-  Object.keys(params4).forEach((key) =>
-    url4.searchParams.append(key, params4[key])
-  );
-
-  const { data: products4 } = await fetch(url4, {
-    method: "GET",
-    headers: headers,
-  }).then((response) => response.json());
-
-  const products = products1.concat(products2, products3);
+  const products = products1.concat(products2)
   return {
     paths: products.map((product) => ({
       params: {
