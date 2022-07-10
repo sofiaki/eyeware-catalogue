@@ -12,7 +12,7 @@ export default function SampleProductList({ products }) {
 
   return (
     <Grid className={styles.sampleArea}>
-      <Typography variant="h5">Νέα Προϊόντα</Typography>
+      <Typography variant="h5">New arrivals</Typography>
       <Grid item  xs={12} md={12} lg={12} className={styles.sampleProductList}>
           
       {sample.map((product) => (

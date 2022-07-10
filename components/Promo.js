@@ -19,11 +19,11 @@ export default function Promo() {
       </a>
       <Grid className={`${styles.promoTitle}`}>
         <a href="/transitions">
-          <Typography variant="body">Ανακαλύψτε τους φακούς</Typography>
+          <Typography variant="body">Explore </Typography>
           &nbsp;
           <Typography
             variant="body"
-            sx={{ textDecoration: "underline", color: "#3030cc" }}
+            sx={{ textDecoration: "underline" }}
           >
             Transitions
           </Typography>

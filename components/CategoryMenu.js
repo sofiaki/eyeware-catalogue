@@ -67,7 +67,7 @@ export default function CategoryMenu(props) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Γυαλιά Οράσεως</TableCell>
+                <TableCell>Glasses</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -78,7 +78,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Γυναικεία Γυαλιά Οράσεως
+                    Woman
                   </TableCell>
                 </Link>
               </TableRow>
@@ -89,7 +89,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Αντρικά Γυαλιά Οράσεως
+                    Man
                   </TableCell>
                 </Link>
               </TableRow>
@@ -100,7 +100,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Unisex Γυαλιά Οράσεως
+                    Unisex
                   </TableCell>
                 </Link>
               </TableRow>
@@ -111,7 +111,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Παιδικά Γυαλιά Οράσεως
+                    Kid
                   </TableCell>
                 </Link>
               </TableRow>
@@ -120,7 +120,7 @@ export default function CategoryMenu(props) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Γυαλιά Ηλίου</TableCell>
+                <TableCell>Sunglasses</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -131,7 +131,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Γυναικεία Γυαλιά Ηλίου
+                    Woman
                   </TableCell>
                 </Link>
               </TableRow>
@@ -142,7 +142,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Αντρικά Γυαλιά Ηλίου
+                    Man
                   </TableCell>
                 </Link>
               </TableRow>
@@ -156,7 +156,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Unisex Γυαλιά Ηλίου
+                    Unisex
                   </TableCell>
                 </Link>
               </TableRow>
@@ -167,7 +167,7 @@ export default function CategoryMenu(props) {
                     className={`${styles.myHover}`}
                     variant="body"
                   >
-                    Παιδικά Γυαλιά Ηλίου
+                    Kid
                   </TableCell>
                 </Link>
               </TableRow>
@@ -177,7 +177,7 @@ export default function CategoryMenu(props) {
             <TableHead>
               <Link href="/categories/lenses/lenses" /*onClick={handleClick}*/>
                 <TableRow className={`${styles.myHover}`}>
-                  <TableCell>Φακοί Επαφής</TableCell>
+                  <TableCell>Contact Lenses</TableCell>
                 </TableRow>
               </Link>
               <Link
@@ -185,7 +185,7 @@ export default function CategoryMenu(props) {
                 /*onClick={handleClick}*/
               >
                 <TableRow className={`${styles.myHover}`}>
-                  <TableCell>Υγρά Φακών Επαφής</TableCell>
+                  <TableCell>Contact Lenses Liquid</TableCell>
                 </TableRow>
               </Link>
             </TableHead>

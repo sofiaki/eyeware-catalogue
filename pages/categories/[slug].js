@@ -76,7 +76,7 @@ export default function CategoryPage({ category, products }) {
         <Footer />
       </>
     );
-
+if(products && category){
   const [brands, setBrands] = useState([]);
   const [kind, setKind] = React.useState(null);
   const [brand, setBrand] = React.useState(null);
@@ -248,5 +248,5 @@ export default function CategoryPage({ category, products }) {
       </Grid>
       <Footer />
     </>
-  );
+  );}
 }

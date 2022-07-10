@@ -13,11 +13,9 @@ const Footer=()=>{
         <Grid container className={styles.footer}>
             <Grid className={styles.contactInfo}>
                 <div>
-                    <Typography variant="body">Πατρέως 40Α, Πάτρα</Typography>
+                    <Typography variant="body">Sofia Kyriazi</Typography>
                 </div>
-                <div>
-                    <Typography variant="body"><a href="tel:+302610318995">2610621070</a></Typography>
-                </div>
+                
                 <SocialIcons />
             </Grid>
         </Grid>

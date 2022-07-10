@@ -11,7 +11,7 @@ export default function CategoryList(props) {
  
   return (
     <Grid className={styles.categoryArea}>
-      <Typography variant="h5">Κατηγορίες Προϊόντων</Typography>
+      <Typography variant="h5">Categories</Typography>
       <Grid className={styles.categoryList} >
         {props.categories.map((category) => (
           <Grid  key={category.slug} className={styles.sampleProductBox}> 
@@ -25,7 +25,7 @@ export default function CategoryList(props) {
                       <img src={`${category.assets[0]?.url}`}  alt="slug" className={styles.categoryItemImg}></img>
                       <Grid item container xs={12} lg={12} className={styles.productTitle}>
                         <Typography variant="body">
-                                {category.name}
+                                {category.slug}
                         </Typography>
                       </Grid>
                     </>

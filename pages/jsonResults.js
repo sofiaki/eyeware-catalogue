@@ -6,13 +6,13 @@ import Grid from "@mui/material/Grid";
 export async function getStaticProps() {
  const merchant = await commerce.merchants.about();
   const { data: categories } = await commerce.categories.list({
-    limit: 500,
+    limit: 200,
 
   });
-  /*const { data: products } = await commerce.products.list({
+  const { data: products } = await commerce.products.list({
     limit: 200,
-  });*/
-  const url1 = new URL(
+  });
+  /*const url1 = new URL(
     "https://api.chec.io/v1/products"
 );
 
@@ -58,17 +58,17 @@ const { data: products1 } = await fetch(url1, {
   })
       .then(response => response.json())
   
-  //const products= products1.concat(products2)
+  //const products= products1.concat(products2)*/
   return {
     props: {
       merchant,
       categories,
-      products1,
+      products,
     },
   };
 }
 const siteTitle = "Οπτικά Όραση";
-export default function IndexPage({ categories,  products1 }) {
+export default function IndexPage({ categories,  products }) {
  
  const [product, setProduct] = useState([]);
  /*  useEffect(() => {
@@ -178,10 +178,10 @@ fetch(url, {
         <title>{siteTitle}</title>
       </Head>
       <Grid p="0px" m="0px">
-        {
-          products1.map((i) => <div>{i.name}</div>)}
-        {/*<pre>{JSON.stringify(products, null, 2)}</pre>*/}
-        <pre>{/*JSON.stringify(categories, null, 2)*/}</pre>
+        {/*
+          products1.map((i) => <div>{i.name}</div>)*/}
+        {<pre>{JSON.stringify(products, null, 2)}</pre>}
+        <pre>{JSON.stringify(categories, null, 2)}</pre>
       </Grid>
     </React.Fragment>
   );
