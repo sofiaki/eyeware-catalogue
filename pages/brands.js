@@ -1,5 +1,6 @@
 //brands.js
 import React from "react";
+import commerce from "../lib/commerce";
 import Head from "next/head";
 import Layout from "../components/layout";
 import Footer from "../components/footer";
@@ -13,59 +14,39 @@ import Loading from "../components/Loading";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 
-export default function CategoriesPage() {
-  const [categories, setCategories] = useState([]);
+export async function getStaticProps() {
+   const { data: categories } = await commerce.categories.list({
+     limit: 200,
+ 
+   });
+   return {
+    props: {
+      categories,
+    },
+  };
+}
+export default function CategoriesPage({categories}) {
+  const cats= categories.filter((i) => i.description === "brand")
   const [brands, setBrands] = useState([]);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 24;
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const url = new URL("https://api.chec.io/v1/categories/");
-
-      let param = {
-        type: "slug",
-        limit: "200",
-      };
-      Object.keys(param).forEach((key) =>
-        url.searchParams.append(key, param[key])
-      );
-
-      let headers = {
-        "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
-        Accept: "application/json", 
-        "Content-Type": "application/json",
-      };
-      await fetch(url, {
-        method: "GET",
-        headers: headers,
-      })
-        .then((res) => res.json())
-        .then((i) => setCategories(i.data));
-
-      setLoading(false);
-      
-    })()
-    
-    return ()=>{
-      setBrands(categories.filter((i) => i.description === "brand"));
-    }
-  },[]);
+  
+  useEffect(()=>{
+    setBrands(cats)
+  },[])
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(brands.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(brands.length / itemsPerPage));
-    setLoading(false);
   }, [itemOffset, itemsPerPage, brands]);
 
-  useEffect(() => {
-    setItemOffset(0);
-  }, [brands]);
+  useEffect(()=>{
+    setItemOffset(0)
+  },[brands]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % brands.length;

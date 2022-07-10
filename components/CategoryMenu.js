@@ -20,7 +20,6 @@ export default function CategoryMenu(props) {
   /**This code is affected by mui close handling */
   const handleClose = () =>{
     setShowMenu(false);
-    console.log(showMenu)
         }
   useEffect(()=>{
 
