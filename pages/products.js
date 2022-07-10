@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import FilterBox from "../components/filterBox";
 import usePagination from "../components/Pagination";
 import Pagination from "@mui/material/Pagination";
-
+import commerce from "../lib/commerce"
 export async function getStaticProps() {
   const { data: products1 } = await commerce.products.list(
     {

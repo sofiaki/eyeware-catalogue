@@ -50,7 +50,7 @@ export async function getStaticPaths() {
   );
   const products = products1 && products1.concat(products2)
   return {
-    paths: products.map((product) => ({
+    paths: products2.map((product) => ({
       params: {
         permalink: product.permalink,
       },
