@@ -283,4 +283,4 @@ export default function CategoryPage({ category, products }) {
       </>
     );
   }
-}
+
