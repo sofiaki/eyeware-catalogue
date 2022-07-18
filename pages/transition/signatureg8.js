@@ -12,7 +12,7 @@ import Link from "@mui/material/Link";
 import TransLinks from "../../components/TransLinks";
 
 const SignatureG8 = () => {
-  const siteTitle = "Οπτικά Όραση";
+  const siteTitle = "Eyewear shop";
  
   return (
     <>

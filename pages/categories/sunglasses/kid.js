@@ -64,7 +64,7 @@ export default function CategoryPage({ products }) {
       </>
     );
 
-  const siteTitle = "Παιδικά Γυαλιά Ηλίου";
+  const siteTitle = "Kid's Sunglasses";
   const [loading, setLoading] = useState(false);
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);

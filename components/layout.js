@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import React, { useEffect } from "react";
 import Header from "./header";
 
-const siteTitle = "Οπτικά Όραση";
+const siteTitle = "Eyewear shop";
 const mainHeader = `${styles.header}`;
 
 export default function Layout({ children }) {

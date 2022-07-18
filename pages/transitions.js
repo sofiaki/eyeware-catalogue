@@ -12,7 +12,7 @@ import { useInView } from "react-intersection-observer";
 import TransLinks from "../components/TransLinks";
 
 const Transitions = () => {
-  const siteTitle = "Οπτικά Όραση";
+  const siteTitle = "Eyewear shop";
   const [play, setPlay] = React.useState(true);
 
   React.useEffect(() => {

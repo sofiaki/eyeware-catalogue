@@ -1,19 +1,22 @@
 // pages/categories/[slug].js
-import ProductList from "../../components/ProductList";
+import { useState } from "react";
+import Link from "next/link";
 import React from "react";
 import { Grid, Typography } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import commerce from "../../lib/commerce";
 import Layout from "../../components/layout";
 import Footer from "../../components/footer";
 import styles from "../../components/ProductList.module.css";
 import FilterBox from "../../components/filterBox";
-import Pagination from "@mui/material/Pagination";
-import { useState } from "react";
-import Link from "next/link";
 import usePagination from "../../components/Pagination";
+import ProductList from "../../components/ProductList";
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  
+
   const url = new URL("https://api.chec.io/v1/categories/" + slug);
 
   let param = {
@@ -32,24 +35,28 @@ export async function getStaticProps({ params }) {
     headers: headers,
   }).then((res) => res.json());
 
-  const url2 = new URL("https://api.chec.io/v1/products");
+
+  const url2 = new URL("https://api.chec.io/v1/products/");
 
   let param2 = {
     limit: "200",
+    category_slug: slug,
+    sortBy: "created_at",
+    sortDirection: "desc",
+  };
+  Object.keys(param2).forEach((key) => url.searchParams.append(key, param[key]));
+
+  let headers2 = {
+    "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
+    Accept: "application/json",
+    "Content-Type": "application/json",
   };
 
-  Object.keys(param2).forEach((key) =>
-    url2.searchParams.append(key, param[key])
-  );
-
-  const myproducts = await fetch(url2, {
+  const {data: products} = await fetch(url2, {
     method: "GET",
-    headers: headers,
-  })
-    .then((res) => res.json())
-    .then((data) => data.data);
-
-  const products = myproducts
+    headers: headers2,
+  }).then((res) => res.json());
+  
   return {
     props: {
       category,
@@ -101,81 +108,81 @@ export default function CategoryPage({ category, products }) {
         <Footer />
       </>
     );
-  if (products && category) {
-    products = products.filter((i) => i.categories.some((j) => j.slug === category.slug))
-    const [brands, setBrands] = useState([]);
-    const [kind, setKind] = React.useState(null);
-    const [brand, setBrand] = React.useState(null);
 
-    const [filteredProducts, setFilteredProducts] = useState(products);
+  const [brands, setBrands] = useState([]);
+  const [kind, setKind] = React.useState(null);
+  const [brand, setBrand] = React.useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const router = useRouter();
+  const [page, setPage] = useState(parseInt(router.query.page) || 1);
+  //let [page, setPage] = useState(1);
+  const PER_PAGE = 24;
+  const count = Math.ceil(filteredProducts.length / PER_PAGE);
+  const _data = usePagination(filteredProducts, PER_PAGE);
 
-    let [page, setPage] = useState(1);
-    const PER_PAGE = 24;
-    const count = Math.ceil(filteredProducts.length / PER_PAGE);
-    const _data = usePagination(filteredProducts, PER_PAGE);
+  const handlePaginationChange = (e, p) => {
+    setPage(p);
+    _data.jump(p);
+    router.push(`${category.slug}/?page=${p}`, undefined, { shallow: true });
+  };
 
-    const handlePaginationChange = (e, p) => {
-      setPage(p);
-      _data.jump(p);
+  function filter() {
+    if (!brand && (!kind || kind == "all")) {
+      return category.slug;
+    }
+    if (!brand && kind) {
+      return [category.slug, kind];
+    }
+    if (brand && (!kind || kind == "all")) {
+      return [category.slug, brand.slug];
+    }
+    if (brand && kind) {
+      return [category.slug, kind, brand.slug];
+    }
+  }
+  const filtered = filter();
+
+  /* Get the brands of this category's products */
+  function getBrands(products) {
+    const brands = [];
+
+    products.map((i) =>
+      i.categories.map((j) => {
+        ![
+          "man",
+          "woman",
+          "kid",
+          "lences",
+          "unisex",
+          "glasses",
+          "sunglasses",
+          "lenssolution",
+          "polarised",
+          "clipon",
+          "transition",
+        ].includes(j.slug) &&
+          !brands.some((b) => b.slug == j.slug) &&
+          brands.push(j);
+      })
+    );
+
+    return brands;
+  }
+
+  React.useEffect(() => {
+    setPage(1);
+  }, [kind, brand]);
+
+  React.useEffect(() => {
+    setBrands(getBrands(products));
+    setBrand(null);
+    setKind(null);
+    return () => {
+      setBrands({});
     };
-
-    function filter() {
-      if (!brand && (!kind || kind === "all")) {
-        return category.slug;
-      }
-      if (!brand && kind) {
-        return [category.slug, kind];
-      }
-      if (brand && (!kind || kind === "all")) {
-        return [category.slug, brand.slug];
-      }
-      if (brand && kind) {
-        return [category.slug, kind, brand.slug];
-      }
-    }
-    const filtered = filter();
-
-    /* Get the brands of this category's products */
-    function getBrands(products) {
-      const brands = [];
-
-      products.map((i) =>
-        i.categories.map((j) => {
-          ![
-            "man",
-            "woman",
-            "kid",
-            "lences",
-            "unisex",
-            "glasses",
-            "sunglasses",
-            "lenssolution",
-            "polarised",
-            "clipon",
-            "transition",
-          ].includes(j.slug) &&
-            !brands.some((b) => b.slug === j.slug) &&
-            brands.push(j);
-        })
-      );
-
-      return brands;
-    }
-
-    React.useEffect(() => {
-      setPage(1);
-    }, [kind, brand]);
-
-    React.useEffect(() => {
-      setBrands(getBrands(products));
-      setBrand(null);
-      setKind(null);
-      return () => {
-        setBrands({});
-      };
-    }, [category /*kind*/]);
-    const sunglasses = category && category.slug === "sunglasses";
-    const glasses = category && category.slug === "glasses";
+  }, [category /*kind*/]);
+  const sunglasses = category && category.slug == "sunglasses";
+  const glasses = category && category.slug == "glasses";
 
     return (
       <>
@@ -192,7 +199,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Γυναικεία Γυαλιά Ηλίου
+                  Woman Sunglasses
                 </Grid>
               </Link>
               <Link href="/categories/sunglasses/man">
@@ -201,7 +208,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Αντρικά Γυαλιά Ηλίου
+                  Αντρικά Sunglasses
                 </Grid>
               </Link>
               <Link href="/categories/sunglasses/kid">
@@ -210,7 +217,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Παιδικά Γυαλιά Ηλίου
+                  Kid's Sunglasses
                 </Grid>
               </Link>
             </Grid>
@@ -223,7 +230,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Γυναικεία Γυαλιά Οράσεως
+                  Woman Glasses
                 </Grid>
               </Link>
               <Link href="/categories/glasses/man">
@@ -232,7 +239,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Αντρικά Γυαλιά Οράσεως
+                  Αντρικά Glasses
                 </Grid>
               </Link>
               <Link href="/categories/glasses/kid">
@@ -241,7 +248,7 @@ export default function CategoryPage({ category, products }) {
                   className={`${styles.myHover}`}
                   variant="body"
                 >
-                  Παιδικά Γυαλιά Οράσεως
+                  Kid's Glasses
                 </Grid>
               </Link>
             </Grid>

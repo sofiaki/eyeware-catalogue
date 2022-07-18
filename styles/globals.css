@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');body {
+@import url('https://fonts.googleapis.com/css2?family=Caudex&family=Eczar&family=Roboto:wght@100;300;400;700&display=swap');
+body {
   /*background-color: rgb(149, 180, 209);*/
-  background-color: rgb(163, 163, 163);
+  background-color: rgb(255, 255, 255);
   font-family:'Roboto', sans-serif;
   /*text-shadow: 0px 0px 2px rgb(155, 154, 154);*/
-  color: rgb(241, 239, 239);
+  color: rgb(55, 55, 55);
   font-size: 18px;
   height: 100%;
   margin: 0;
@@ -12,12 +13,12 @@
   min-width: 350px;
 }
 .MuiPaginationItem-root{
-  color:aliceblue;
+  color:rgb(59, 59, 59);
 }
 *{
   box-sizing: border-box;
 }
 a {
   text-decoration: none;
-  color: rgb(241, 239, 239);
+  color: rgb(50, 50, 50);
 }

@@ -30,6 +30,7 @@
     rgb(148, 148, 148),
     rgb(156, 156, 156)
   );
+  height: 180px;
 }
 .headerBox a {
   color: inherit;
@@ -39,6 +40,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  color:rgba(244, 245, 245, 0.959);
 }
 .header * {
   color: inherit;
@@ -74,7 +76,7 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
-  text-shadow: 0px 4px 4px rgba(194, 192, 219, 0.8);
+  text-shadow: 0px 1px 1px rgba(194, 192, 219, 0.8);
 }
 
 .brandBlock:hover {
@@ -91,7 +93,7 @@
   flex-direction: column;
   text-align: center;
   flex-wrap: nowrap;
-  font-family: "Roboto", sans serif;
+  font-family: "Caudex", serif;
   font-size: 18px;
   font-weight: 100;
 }
@@ -122,6 +124,7 @@
   display: inline-flex;
   align-content: flex-end;
   justify-content: flex-start;
+  color: rgb(244, 246, 247);
 }
 .menu > * {
   font-size: 18px;
@@ -332,12 +335,12 @@
   margin-bottom: 50px;
   width: 100%;
   max-width: 1300px;
-  height: 900px;
+  height: 500px;
   background-image: url("../public/images/banner/Transitions_Bernelle_Style-Colors_Emerald_KV_Horiz_EN_Final.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: top;
+  background-size: cover;
   /*padding: 20px;*/
   border-radius: 3px;
 }

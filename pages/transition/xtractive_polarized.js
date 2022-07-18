@@ -10,7 +10,7 @@ import TransLinks from "../../components/TransLinks";
 import ReactPlayer from "react-player";
 import Filler from "./../../components/filler"
 const SignatureG8 = () => {
-  const siteTitle = "Οπτικά Όραση";
+  const siteTitle = "Eyewear shop";
 
   return (
     <>

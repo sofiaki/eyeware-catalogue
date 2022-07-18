@@ -59,7 +59,7 @@ export default function CategoryPage({ products }) {
       </>
     );
 
-  const siteTitle = "Ανδρικά Γυαλιά Οράσεως";
+  const siteTitle = "Men Glasses";
   const [loading, setLoading] = useState(false);
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
