@@ -23,7 +23,7 @@ export default function PopUpVideo() {
     );
     setPlay(true);
     setShowMenu(sessionStorage.getItem("popup") ? false : true);
-    localStorage.setItem("popup", JSON.stringify("played"));
+    sessionStorage.setItem("popup", JSON.stringify("played"));
   }, []);
   return (
     <Grid

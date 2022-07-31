@@ -9,7 +9,7 @@ export default function Promo() {
       <Grid className={`${styles.promoTitle}`}>
         <a href="/transitions">
           <img
-            src="/images/transitions/logo-transitions-white-20.webp"
+            src="/images/transitions/transitions-logo-1.png"
             width="30%"
           />
         </a>

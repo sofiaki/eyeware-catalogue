@@ -17,7 +17,7 @@ export default function ProductList({items}) {
   <Grid item container xs={12} md={12} lg={12} >  
     <Grid item  className={styles.productList} container xs={12} md={12} lg={12} >
       {items && items.map((product) => (
-          <Grid className={styles.productBox} item xs={12} sm={6} md={4} lg={3} key={product.permalink} >       
+          <Grid className={styles.productBox} key={product.permalink} >       
             <Link key={product.permalink} href={`/products/${product.permalink}`}>
               <a>
                 <Product props={product} />

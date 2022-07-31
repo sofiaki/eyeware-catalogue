@@ -1,5 +1,6 @@
 import styles from "./layout.module.css";
 import { Grid, Typography } from "@mui/material";
+import Search from "./Search";
 import CategoryMenu from "./CategoryMenu";
 import React from "react";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
@@ -117,8 +118,8 @@ url: "/categories/lencessolution"
               </a>
             </Link>
           </Grid>
-          <Grid position="absolute" bottom="5px" right="10px">
-          
+          <Grid position="absolute" bottom="5px" right="10px" sx={{display: 'inline-flex', alignItems:'flex-end'}}>
+            <Search />
             <SocialIcons />
           </Grid>
         </Grid>
