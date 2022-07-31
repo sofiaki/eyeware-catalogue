@@ -152,10 +152,6 @@ export default function ProductPage({ product }) {
             item
             container
             className={styles.pdtImgDiv}
-            xs={12}
-            sm={12}
-            md={6}
-            lg={5}
           >
             <Grid
               sx={{
@@ -218,10 +214,6 @@ export default function ProductPage({ product }) {
           <Grid
             item
             container
-            xs={12}
-            sm={12}
-            md={6}
-            lg={7}
             className={styles.pdtDscr}
           >
             <Grid>

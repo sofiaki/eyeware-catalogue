@@ -236,7 +236,7 @@ CSS for products.js, [slug].js, [permalink].js, ProductList.js
     position: relative;
     padding: 0px;
     display: block;
-    width: 60%;
+    width: 100%;
     margin-top: 15px;
   }
   @media screen and (max-width: 600px) {
