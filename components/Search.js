@@ -44,7 +44,7 @@ export default function Search() {
       <Autocomplete
         id="combo-box-demo"
         options={options}
-        onChange={(event, chosen)=> router.push(`/products/${chosen.permalink}`)}
+        onChange={(event, chosen)=> chosen && router.push(`/products/${chosen.permalink}`)}
         onInputChange={onInputChange}
         getOptionLabel={(option) => option.title}
         style={{ width: 200, height: 50}}
