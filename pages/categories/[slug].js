@@ -36,27 +36,11 @@ export async function getStaticProps({ params }) {
   }).then((res) => res.json());
 
 
-  const url2 = new URL("https://api.chec.io/v1/products/");
-
-  let param2 = {
-    limit: "200",
-    category_slug: slug,
-    sortBy: "created_at",
-    sortDirection: "desc",
-  };
-  Object.keys(param2).forEach((key) => url.searchParams.append(key, param[key]));
-
-  let headers2 = {
-    "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-
-  const {data: products} = await fetch(url2, {
-    method: "GET",
-    headers: headers2,
-  }).then((res) => res.json());
-  
+  const { data: myProducts } = await commerce.products.list({
+    limit: 200,
+    category_id: category.id,
+  });
+  const products = myProducts?myProducts:[]
   return {
     props: {
       category,
