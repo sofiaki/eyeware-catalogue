@@ -44,7 +44,7 @@ export async function getStaticProps({ params }) {
     sortBy: "created_at",
     sortDirection: "desc",
   };
-  Object.keys(param2).forEach((key) => url2.searchParams.append(key, param2[key]));
+  Object.keys(param2).forEach((key) => url.searchParams.append(key, param[key]));
 
   let headers2 = {
     "X-Authorization": "sk_39244c228a8c0ff02c35e643a1a4fbabf0b431f703c08",
