@@ -48,7 +48,7 @@ export async function getStaticPaths() {
       sortDirection: 'desc'
     }
   );
-  const products = products1 && products1.concat(products2)
+  const products = products1 && (products2 && products1.concat(products2))
   return {
     paths: products.map((product) => ({
       params: {
