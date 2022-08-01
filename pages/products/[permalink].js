@@ -104,7 +104,7 @@ export default function ProductPage({ product }) {
   return (
     <>
       <Head>
-        <title>{product.name} - Οπτικά Όραση</title>
+        <title>{product.name} - Eyewear shop</title>
       </Head>
       <Layout />
       <Grid

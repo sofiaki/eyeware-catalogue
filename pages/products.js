@@ -88,7 +88,7 @@ export default function ProductsPage({ products }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Οπτικά Όραση - Όλα τα προϊόντα</title>
+        <title>Eyewear shop - Όλα τα προϊόντα</title>
       </Head>
       <Layout />
       <Grid className={styles.container}>

@@ -166,7 +166,7 @@ export default function CategoryPage({ products }) {
   return (
     <>
       <Head>
-        <title>{`${siteTitle} - Οπτικά Όραση`}</title>
+        <title>{`${siteTitle} - Eyewear shop`}</title>
       </Head>
       <Layout />
       <Grid className={styles.slugcontainer}>

@@ -33,7 +33,7 @@ export async function getStaticProps() {
     },
   };
 }
-const siteTitle="Οπτικά Όραση"
+const siteTitle="Eyewear shop"
 export default function IndexPage({categories, products }) {
   const sampleCategories= categories.filter(category=>['glasses', 'sunglasses', 'lences'].includes(category.slug))
 

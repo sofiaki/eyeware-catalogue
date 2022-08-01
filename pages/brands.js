@@ -55,7 +55,7 @@ export default function CategoriesPage({categories}) {
   return (
     <React.Fragment>
       <Head>
-        <title>Οπτικά Όραση - Brands</title>
+        <title>Eyewear shop - Brands</title>
       </Head>
       <StyledEngineProvider injectFirst>
         <Layout />
