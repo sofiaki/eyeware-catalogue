@@ -5,7 +5,6 @@ import Layout from "../../components/layout";
 import Head from "next/head";
 import Grid from "@mui/material/Grid";
 import Footer from "../../components/footer";
-import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import styles from "../../components/ProductList.module.css";
 import RelatedProducts from "../../components/RelatedProducts";
@@ -16,7 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Icon } from "@iconify/react";
 import arrowsExpand from "@iconify/icons-foundation/arrows-expand";
 
-export async function getStaticProps({ params }) {
+/*export async function getStaticProps({ params }) {
   const { permalink } = params;
   
    const product = await commerce.products.retrieve(permalink, {
@@ -48,7 +47,8 @@ export async function getStaticPaths() {
       sortDirection: 'desc'
     }
   );
-  const products = products1 && (products2 && products1.concat(products2))
+  const products = products1.concat(products2)
+  
   return {
     paths: products.map((product) => ({
       params: {
@@ -57,15 +57,30 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
+}*/
 
+export async function getServerSideProps({ params }) {
+  const { permalink } = params;
+  
+   const product = await commerce.products.retrieve(permalink, {
+    type: "permalink",
+  });
+
+  return {
+    props: {
+      product,
+    },
+  };
+
+  
+}
 export default function ProductPage({ product }) {
- if(product){ const {
+  if(product){const {
     inventory,
     assets,
     meta,
     related_products: relatedProducts,
-  } = product;
+  } = product && product;
 
   const type = product && product.categories.some((i) =>
     ["lences", "lenssolution"].includes(i.slug)
@@ -74,10 +89,10 @@ export default function ProductPage({ product }) {
   const inventoryCheck = product.inventory.available;
   const [showMenu, setShowMenu] = React.useState(false);
   const handleClick = () => {
-    showMenu === false ? setShowMenu(true) : setShowMenu(false);
+    showMenu == false ? setShowMenu(true) : setShowMenu(false);
   };
   let brand = "";
-  product.categories.map((j) => {
+  product && product.categories.map((j) => {
     ![
       "man",
       "woman",
@@ -104,7 +119,20 @@ export default function ProductPage({ product }) {
   return (
     <>
       <Head>
-        <title>{product.name} - Eyewear shop</title>
+        <title>{`${brandName} ${productName}`} - Οπτικά Όραση</title>
+        <meta name="description" content={`${brand} ${productName}`} />
+        <link rel="icon" href="/favicon3.png" />
+        <meta
+          name="description"
+          content={`${brandName} ${productName}`}
+        />
+        <meta
+          name="keywords"
+          content="οπτικά, γυαλιά ηλίου, γυαλιά οράσεως, κυπραιου, πατρα, φακοί επαφής, φωτοχρωμικοί φακοί, πολωτικοί φακοί"
+        ></meta>
+        <meta property="og:image" content={`/images/logo-header6.png`} />
+        <meta name="og:title" content="Οπτικά όραση" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Layout />
       <Grid
@@ -147,11 +175,12 @@ export default function ProductPage({ product }) {
       </Grid>
 
       <Grid container className={styles.productPage}>
-        <>
+        
           <Grid
             item
             container
             className={styles.pdtImgDiv}
+           
           >
             <Grid
               sx={{
@@ -162,9 +191,9 @@ export default function ProductPage({ product }) {
                 margin: "auto",
               }}
             >
-              {inventoryCheck === 0 && (
+              {inventoryCheck == 0 && (
                 <Grid className={styles.soldOutPermalink}>
-                  Low availability
+                  Χαμηλή διαθεσιμότητα
                 </Grid>
               )}
               <Carousel
@@ -172,7 +201,6 @@ export default function ProductPage({ product }) {
                 sx={{
                   width: "100%",
                   margin: "auto",
-                  maxWidth: "400px",
                 }}
                 navButtonsWrapperProps={{
                   // Move the buttons to the bottom. Unsetting top here to override default style.
@@ -214,6 +242,7 @@ export default function ProductPage({ product }) {
           <Grid
             item
             container
+           
             className={styles.pdtDscr}
           >
             <Grid>
@@ -235,7 +264,7 @@ export default function ProductPage({ product }) {
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></div>
           </Grid>
-        </>
+        
         <div className={styles.productList}>
           <RelatedProducts products={relatedProducts} type={type} />
         </div>
@@ -247,7 +276,7 @@ export default function ProductPage({ product }) {
 
 function Item(props) {
   return (
-    <Paper>
+    <Paper sx={{boxShadow: 'none'}}>
       <img className={styles.pdtPgImg} src={props.item.url} />
     </Paper>
   );}
